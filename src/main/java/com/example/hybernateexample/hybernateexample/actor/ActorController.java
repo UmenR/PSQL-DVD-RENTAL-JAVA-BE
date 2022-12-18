@@ -16,8 +16,6 @@ public class ActorController {
 
     @GetMapping(path = "/{id}")
     public List<Actor> getActorById(@PathVariable("id") Integer id){
-        System.out.println("||||||");
-        System.out.println("|-|_");
         return actorRepository.findAllById(new ArrayList<>(Arrays.asList(id)));
     }
 
