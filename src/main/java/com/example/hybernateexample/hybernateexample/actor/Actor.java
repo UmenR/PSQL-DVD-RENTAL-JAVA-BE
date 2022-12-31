@@ -1,7 +1,10 @@
 package com.example.hybernateexample.hybernateexample.actor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.example.hybernateexample.hybernateexample.film.Film;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Actor {
@@ -9,11 +12,16 @@ public class Actor {
     private int actor_id;
     private String first_name;
     private String last_name;
+    @ManyToMany
+    @JoinTable(name="film_actor",joinColumns = { @JoinColumn(name = "actor_id") },
+            inverseJoinColumns = { @JoinColumn(name = "film_id") })
+    private Set<Film> films = new HashSet<Film>();
 
-    public Actor(int actor_id, String first_name, String last_name) {
+    public Actor(int actor_id, String first_name, String last_name, Set<Film> films) {
         this.actor_id = actor_id;
         this.first_name = first_name;
         this.last_name = last_name;
+        this.films = films;
     }
 
     public Actor() {
@@ -26,6 +34,10 @@ public class Actor {
 
     public void setActor_id(int actor_id) {
         this.actor_id = actor_id;
+    }
+
+    public Set<Film> getFilms() {
+        return films;
     }
 
     public String getFirst_name() {
@@ -41,15 +53,16 @@ public class Actor {
     }
 
     public void setLast_name(String last_name) {
+
         this.last_name = last_name;
     }
 
     @Override
     public String toString() {
         return "Actor{" +
-                "actor_id=ss" + actor_id +
-                ", firs_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
+                "actor_id=" + actor_id +
+                ", first_name='" + first_name + '\'' +
+//                ", films=" + films +
                 '}';
     }
 }

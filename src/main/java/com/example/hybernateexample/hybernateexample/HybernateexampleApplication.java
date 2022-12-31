@@ -25,6 +25,7 @@ public class HybernateexampleApplication {
 		return  args -> {
 			List<Actor> l1 = actorRepository1.findAll();
 			System.out.println(l1.get(0).toString());
+//			System.out.println(l1.get(0).getFilms().toString());
 		};
 	}
 }

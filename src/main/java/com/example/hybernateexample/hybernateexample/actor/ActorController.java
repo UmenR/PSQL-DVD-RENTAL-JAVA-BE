@@ -23,6 +23,8 @@ public class ActorController {
     public Actor addActor(@RequestBody Actor newActor){
         System.out.println("--");
         System.out.println();
+        System.out.println("ppp");
+        System.out.println("pasd");
         return actorRepository.save(newActor);
     }
 
