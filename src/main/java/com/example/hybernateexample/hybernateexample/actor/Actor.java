@@ -1,6 +1,8 @@
 package com.example.hybernateexample.hybernateexample.actor;
 
 import com.example.hybernateexample.hybernateexample.film.Film;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -15,6 +17,7 @@ public class Actor {
     @ManyToMany
     @JoinTable(name="film_actor",joinColumns = { @JoinColumn(name = "actor_id") },
             inverseJoinColumns = { @JoinColumn(name = "film_id") })
+    @JsonManagedReference
     private Set<Film> films = new HashSet<Film>();
 
     public Actor(int actor_id, String first_name, String last_name, Set<Film> films) {

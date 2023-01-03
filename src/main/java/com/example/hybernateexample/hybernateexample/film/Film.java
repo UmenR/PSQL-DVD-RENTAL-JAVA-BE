@@ -1,6 +1,7 @@
 package com.example.hybernateexample.hybernateexample.film;
 
 import com.example.hybernateexample.hybernateexample.actor.Actor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Column;
@@ -19,7 +20,7 @@ public class Film {
     private String title;
 
     @ManyToMany(mappedBy = "films")
-    @JsonIgnore
+    @JsonBackReference
     private Set<Actor> actors = new HashSet<>();
 
     public int getId() {
