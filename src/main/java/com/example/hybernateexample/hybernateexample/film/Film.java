@@ -1,13 +1,12 @@
 package com.example.hybernateexample.hybernateexample.film;
 
 import com.example.hybernateexample.hybernateexample.actor.Actor;
+import com.example.hybernateexample.hybernateexample.category.Category;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,6 +21,12 @@ public class Film {
     @ManyToMany(mappedBy = "films")
     @JsonBackReference
     private Set<Actor> actors = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "film_category", joinColumns = {@JoinColumn(name = "film_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")})
+    @JsonManagedReference
+    private Set<Category> categories = new HashSet<Category>();
 
     public int getId() {
         return film_id;
@@ -45,6 +50,14 @@ public class Film {
 
     public void setActors(Set<Actor> actors) {
         this.actors = actors;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 
     @Override
