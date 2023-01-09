@@ -35,4 +35,12 @@ public class Language {
     public void setLanguage_id(int language_id) {
         this.language_id = language_id;
     }
+
+    @Override
+    public String toString() {
+        return "Language{" +
+                "language_id=" + language_id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

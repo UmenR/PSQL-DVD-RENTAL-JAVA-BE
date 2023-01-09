@@ -2,6 +2,7 @@ package com.example.hybernateexample.hybernateexample.film;
 
 import com.example.hybernateexample.hybernateexample.actor.Actor;
 import com.example.hybernateexample.hybernateexample.category.Category;
+import com.example.hybernateexample.hybernateexample.language.Language;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -17,6 +18,10 @@ public class Film {
     @Column(name = "film_id")
     private int film_id;
     private String title;
+
+    @ManyToOne
+    @JoinColumn(name = "language_id")
+    private Language language;
 
     @ManyToMany(mappedBy = "films")
     @JsonBackReference
@@ -58,6 +63,14 @@ public class Film {
 
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
     }
 
     @Override
