@@ -11,6 +11,7 @@ public class Inventory {
     private int id;
 
     @ManyToOne
+    @JoinColumn(name = "film_id")
     private Film film;
 
     private int store_id;
