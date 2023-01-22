@@ -4,7 +4,6 @@ import com.example.hybernateexample.hybernateexample.actor.Actor;
 import com.example.hybernateexample.hybernateexample.category.Category;
 import com.example.hybernateexample.hybernateexample.language.Language;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
