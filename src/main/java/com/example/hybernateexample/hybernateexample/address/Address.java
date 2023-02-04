@@ -1,8 +1,8 @@
 package com.example.hybernateexample.hybernateexample.address;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.example.hybernateexample.hybernateexample.city.City;
+
+import javax.persistence.*;
 
 @Entity
 public class Address {
@@ -15,13 +15,22 @@ public class Address {
 
     private String district;
 
-    private int cityId;
-
     @Column(name = "postal_code")
     private String postCode;
 
     private String phone;
 
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
 
     public int getId() {
         return id;
@@ -45,14 +54,6 @@ public class Address {
 
     public void setDistrict(String district) {
         this.district = district;
-    }
-
-    public int getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(int cityId) {
-        this.cityId = cityId;
     }
 
     public String getPostCode() {
