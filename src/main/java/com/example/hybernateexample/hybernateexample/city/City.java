@@ -1,8 +1,8 @@
 package com.example.hybernateexample.hybernateexample.city;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.example.hybernateexample.hybernateexample.country.Country;
+
+import javax.persistence.*;
 
 @Entity
 public class City {
@@ -12,6 +12,10 @@ public class City {
 
     @Column(name = "city")
     private String CityName;
+
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    private Country country;
 
     public int getCityId() {
         return cityId;
@@ -27,5 +31,13 @@ public class City {
 
     public void setCityName(String cityName) {
         CityName = cityName;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

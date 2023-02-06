@@ -1,8 +1,11 @@
 package com.example.hybernateexample.hybernateexample.staff;
 
+import org.springframework.data.jpa.repository.Query;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Collection;
 
 @Entity
 public class Staff {
