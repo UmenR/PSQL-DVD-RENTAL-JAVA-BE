@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -20,5 +21,10 @@ public class StaffController {
     @GetMapping(path = "/{id}")
     public List<Staff> getStaffById(@PathVariable(name = "id") Integer id ){
         return staffRepository.findAllById(new ArrayList<>(Arrays.asList(id)));
+    }
+
+    @GetMapping(path = "/inactive")
+    public Collection<Staff> getAllInactive(){
+        return staffRepository.getAllInactive();
     }
 }
